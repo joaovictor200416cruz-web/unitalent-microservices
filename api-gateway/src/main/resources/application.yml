@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: auth
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/auth/**
+        - id: estudantes
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/estudantes/**
+        - id: empresas
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/empresas/**
+        - id: vagas
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/vagas/**
+        - id: candidaturas
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/candidaturas/**
+        - id: notificacoes
+          uri: http://localhost:8086
+          predicates:
+            - Path=/api/notificacoes/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway

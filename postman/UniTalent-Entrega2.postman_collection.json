@@ -1,0 +1,46 @@
+{
+  "info": {
+    "name": "UniTalent - Entrega 2",
+    "_postman_id": "unitalent-entrega2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{"key":"baseUrl","value":"http://localhost:8080"}],
+  "item": [
+    {
+      "name":"1 - Registrar usuário",
+      "request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],
+      "body":{"mode":"raw","raw":"{\"username\":\"admin\",\"password\":\"123456\",\"role\":\"ADMIN\"}"},
+      "url":{"raw":"{{baseUrl}}/api/auth/register","host":["{{baseUrl}}"],"path":["api","auth","register"]}}
+    },
+    {
+      "name":"2 - Login",
+      "request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],
+      "body":{"mode":"raw","raw":"{\"username\":\"admin\",\"password\":\"123456\"}"},
+      "url":{"raw":"{{baseUrl}}/api/auth/login","host":["{{baseUrl}}"],"path":["api","auth","login"]}}
+    },
+    {
+      "name":"3 - Criar estudante",
+      "request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"},{"key":"Authorization","value":"Bearer COLE_SEU_TOKEN"}],
+      "body":{"mode":"raw","raw":"{\"nome\":\"João Silva\",\"email\":\"joao@email.com\",\"curso\":\"Ciência da Computação\",\"habilidades\":\"Java, Spring Boot, MySQL\",\"curriculoUrl\":\"https://exemplo.com/cv\"}"},
+      "url":{"raw":"{{baseUrl}}/api/estudantes","host":["{{baseUrl}}"],"path":["api","estudantes"]}}
+    },
+    {
+      "name":"4 - Criar empresa",
+      "request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"},{"key":"Authorization","value":"Bearer COLE_SEU_TOKEN"}],
+      "body":{"mode":"raw","raw":"{\"razaoSocial\":\"Empresa Tech Ltda\",\"cnpj\":\"00.000.000/0001-00\",\"email\":\"rh@empresa.com\",\"descricao\":\"Empresa de tecnologia\"}"},
+      "url":{"raw":"{{baseUrl}}/api/empresas","host":["{{baseUrl}}"],"path":["api","empresas"]}}
+    },
+    {
+      "name":"5 - Criar vaga",
+      "request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"},{"key":"Authorization","value":"Bearer COLE_SEU_TOKEN"}],
+      "body":{"mode":"raw","raw":"{\"titulo\":\"Estágio em Desenvolvimento Java\",\"descricao\":\"Desenvolvimento de APIs\",\"requisitos\":\"Java, Spring Boot\",\"empresaId\":1,\"status\":\"ATIVA\"}"},
+      "url":{"raw":"{{baseUrl}}/api/vagas","host":["{{baseUrl}}"],"path":["api","vagas"]}}
+    },
+    {
+      "name":"6 - Candidatura (COMUNICAÇÃO SÍNCRONA)",
+      "request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"},{"key":"Authorization","value":"Bearer COLE_SEU_TOKEN"}],
+      "body":{"mode":"raw","raw":"{\"estudanteId\":1,\"vagaId\":1}"},
+      "url":{"raw":"{{baseUrl}}/api/candidaturas","host":["{{baseUrl}}"],"path":["api","candidaturas"]}}
+    }
+  ]
+}
